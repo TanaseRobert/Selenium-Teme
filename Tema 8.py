@@ -4,17 +4,10 @@ https://the-internet.herokuapp.com/
 https://www.techlistic.com/p/selenium-practice-form.html
 jules.app
 
-Alegeti cate 3 elemente din fiecare tip de selector din urmatoarele categorii:
-
-Id
-Link text
-Partial link text
 Name
 Tag*
 Class name*
 
-obs:
-Probabil nu veti gasi un singur website care sa cuprinda toate variantele de mai sus, astfel ca va recomandam sa folositi mai multe site-uri
 Optional: La tag si class name veti folosi find elementS! - salvati in lista. Interactionati cu un element la alegere din lista
 '''
 
@@ -28,26 +21,9 @@ from selenium.webdriver.common.by import By
 s = Service(ChromeDriverManager().install())
 chrome = webdriver.Chrome(service=s)
 
-#fereastra mare
 chrome.maximize_window()
 
-#fereastra mica
-#chrome.minimize_window()
-
-#deschidem o pagina
-#chrome.get('https://www.phptravels.net/')
-
-#selector BY id
 '''
-first_name = chrome.find_element(By.ID, "fadein")
-first_name.send_keys("Emanuel")
-first_name.clear()
-first_name.send_keys("Emanuel")
-
-last_name = chrome.find_element(By.ID, "last-name")
-last_name.send_keys("Tanasa")
-'''
-
 chrome.get('https://formy-project.herokuapp.com')
 chrome.find_element(By.LINK_TEXT, "Autocomplete").click()
 chrome.get('https://formy-project.herokuapp.com/autocomplete')
@@ -58,5 +34,33 @@ chrome.find_element(By.ID, "locality").send_keys("Bacau")
 chrome.find_element(By.ID, "administrative_area_level_1").send_keys("Moldovia")
 chrome.find_element(By.ID, "postal_code").send_keys("600272")
 chrome.find_element(By.ID, "country").send_keys("Romania")
+
+chrome.get('https://formy-project.herokuapp.com')
+chrome.find_element(By.PARTIAL_LINK_TEXT, "Enabled").click()
+chrome.get('https://formy-project.herokuapp.com/enabled')
+chrome.find_element(By.ID, "input").send_keys("Test")
+
+chrome.get('https://formy-project.herokuapp.com')
+chrome.find_element(By.PARTIAL_LINK_TEXT, "Datepicker").click()
+chrome.get('https://formy-project.herokuapp.com/datepicker')
+chrome.find_element(By.ID, "datepicker").send_keys("11/19/2001")
+
+chrome.get('https://formy-project.herokuapp.com')
+chrome.find_element(By.PARTIAL_LINK_TEXT, "Complete Web Form").click()
+chrome.get('https://formy-project.herokuapp.com/form')
+chrome.find_element(By.CLASS_NAME, "form-control").send_keys("Robert")
+chrome.find_element(By.ID, "last-name").send_keys("Tanasa")
+chrome.find_element(By.ID, "job-title").send_keys("Programmer")
+chrome.find_element(By.ID, "radio-button-2").click()
+chrome.find_element(By.ID, "checkbox-1").click()
+chrome.find_element(By.ID, "select-menu").send_keys("0-1")
+chrome.find_element(By.ID, "datepicker").send_keys("08/07/2022")
+
+chrome.get('https://formy-project.herokuapp.com')
+chrome.find_element(By.LINK_TEXT, "Switch Window").click()
+chrome.get('https://formy-project.herokuapp.com/switch-window')
+chrome.find_element(By.ID, "alert-button").click()
+'''
+
 sleep(200)
 chrome.quit()
